@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from './logoBG.png';
 
 const Login = (props) => {
 
@@ -18,13 +19,16 @@ const Login = (props) => {
     return(
         <section className="login">
             <div className="loginContainer">
+            <div className="logo-contain">
+                <img className="logo-login" src={logo} alt={'logo'}/>
+            </div>
                 <label>Username</label>
                 <input 
                 type="text" 
                 autoFocus 
                 required 
                 value={email} 
-                onChange={(e) => setEmail(e.target.value)}>
+                onChange={(e) => setEmail(e.target.value)} placeholder="Username">
 
                 </input>
                 <p className="errorMsg">{emailError}</p>
@@ -35,20 +39,18 @@ const Login = (props) => {
                 required 
                 value={password} 
                 onChange={(e) => setPassword(e.target.value)}
-                ></input>
+                placeholder="Password"></input>
                 <p className="errorMsg">{passwordError}</p>
                 <div className="btnContainer">
                     {hasAccount ? (
                         <>
                         <button onClick={handleLogin}>Sign In</button>
-                        <p>Don't have an account ? <span onClick={() => setHasAccount(!hasAccount)}>Sign Up</span></p>
+                        <p>Don't have an account? <span onClick={() => setHasAccount(!hasAccount)}> Sign Up</span></p>
                         </>
                     ) : (
                         <>
                         <button onClick={handleSignup}>Sign Up</button>
-                        <p>Have an account ? <span onClick={() => setHasAccount(!hasAccount)}>Sign In</span></p>
-                        <p>Forgot password ? </p>
-                        
+                        <p>Have an account? <span onClick={() => setHasAccount(!hasAccount)}> Sign In</span></p>
                         </>
                     )}
                 </div>

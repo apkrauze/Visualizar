@@ -1,5 +1,9 @@
  import firebase from 'firebase';
  
+ 
+
+
+ 
  var firebaseConfig = {
     apiKey: "AIzaSyAbvxESsH30worIFcgDhWzdKsiVl4Z42jQ",
     authDomain: "visualizar-9141e.firebaseapp.com",
@@ -11,5 +15,9 @@
     measurementId: "G-GQN1F4S95K"
   };
   const fire = firebase.initializeApp(firebaseConfig);
+  
+  
+  
 
-  export default fire;
+
+  export { fire as default };
