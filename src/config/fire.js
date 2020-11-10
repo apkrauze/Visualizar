@@ -1,4 +1,5 @@
  import firebase from 'firebase';
+ import 'firebase/storage'
  
  
 
@@ -15,9 +16,10 @@
     measurementId: "G-GQN1F4S95K"
   };
   const fire = firebase.initializeApp(firebaseConfig);
+  const storage = firebase.storage();
   
   
   
 
 
-  export { fire as default };
+  export { storage, fire as default };
