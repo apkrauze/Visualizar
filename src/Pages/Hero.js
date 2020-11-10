@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Upload from './Upload';
-import logo from "./logoBG.png";
+
 
 const Hero = ({ handleLogout }) => {
   return (
