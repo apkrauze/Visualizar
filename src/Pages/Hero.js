@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 const Hero = ({handleLogout}) => {
@@ -7,10 +8,15 @@ const Hero = ({handleLogout}) => {
         <section className="hero">
             <nav>
                 <h2>Welcome</h2>
+                <Link to="/Profile">Profile</Link>
                 <button onClick={handleLogout}>Logout</button>
-            </nav>
 
+            </nav>
+            <header>
+                
+            </header>
         </section>
+        
     )
 }
 
