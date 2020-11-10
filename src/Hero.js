@@ -2,6 +2,7 @@ import React from 'react';
 import Upload from './Upload';
 import logo from "./logoBG.png";
 import Preloader from './Preloader';
+import Sidebar from './Sidebar';
 
 const Hero = ({ handleLogout }) => {
   return (
@@ -12,10 +13,10 @@ const Hero = ({ handleLogout }) => {
         <div className="logo-page-contain">
           <img className="logo-page" src={logo} alt={"logo"} /> 
         </div>
-        <button onClick={handleLogout}>Logout</button>   
+        <Sidebar pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
+        {/* <button onClick={handleLogout}>Logout</button>    */}
         {/* BURGER MENU GOES HERE> */}
       </nav>
-      <section></section>
     </section>
   );
 };
