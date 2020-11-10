@@ -22,13 +22,13 @@ const Login = (props) => {
             <div className="logo-contain">
                 <img className="logo-login" src={logo} alt={'logo'}/>
             </div>
-                <label>Username</label>
+                <label>Email</label>
                 <input 
                 type="text" 
                 autoFocus 
                 required 
                 value={email} 
-                onChange={(e) => setEmail(e.target.value)} placeholder="Username">
+                onChange={(e) => setEmail(e.target.value)} placeholder="Email">
 
                 </input>
                 <p className="errorMsg">{emailError}</p>
