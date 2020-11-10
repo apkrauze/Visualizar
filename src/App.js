@@ -80,7 +80,7 @@ function App() {
 
   useEffect(() => {
     authListener();
-  }, []);
+  }, );
 
   return (
     <div className="App">
@@ -99,8 +99,7 @@ function App() {
         emailError={emailError}
         passwordError={passwordError}
         />
-      )}
-        
+      )}      
         
     </div>
   );
