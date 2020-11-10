@@ -12,7 +12,6 @@ function App() {
 
   return (
     <Router>
-
       <Switch>
         <Route path="/" exact component={LoginPage}></Route>
       </Switch>

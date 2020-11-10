@@ -1,7 +1,8 @@
-import React from 'react';
+import {React, useEffect, useState} from 'react';
 import logo from './logoBG.png';
-
+import Preloader from './Preloader';
 const Login = (props) => {
+    const [preload, setPreload] = useState(false);
 
     const { 
         email,
@@ -54,8 +55,6 @@ const Login = (props) => {
                         </>
                     )}
                 </div>
-                
-
                 
             </div>
         </section>
