@@ -11,7 +11,7 @@ export default ({ handleLogout }) => {
   return (
     <Menu>
       <NavLink activeClassName="active" exact to="/">
-        Hero
+        Home
         </NavLink>
       <NavLink activeClassName="active" to="/Profile">
         Profile
@@ -20,17 +20,8 @@ export default ({ handleLogout }) => {
         Upload
         </NavLink>
       <a className="menu-item" href="htttp://www.youtube.com">
-        <button onClick={handleLogout}>Logout</button>
+        <button className="logout-button" onClick={handleLogout}>Logout</button>
       </a>
-      {/* <a className="menu-item" href="htttp://www.youtube.com">
-        Home
-      </a>
-      <a className="menu-item" href="htttp://www.youtube.com">
-      Upload
-      </a>
-      <a className="menu-item" href="htttp://www.youtube.com">
-       <button onClick={handleLogout}>Logout</button>
-      </a>    */}
     </Menu>
   );
 };
