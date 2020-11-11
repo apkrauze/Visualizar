@@ -22,7 +22,7 @@ const Login = (props) => {
             <div className="logo-contain">
                 <img className="logo-login" src={logo} alt={'logo'}/>
             </div>
-                <label>Username</label>
+                <label>Email</label>
                 <input 
                 type="text" 
                 autoFocus 
@@ -45,6 +45,7 @@ const Login = (props) => {
                     {hasAccount ? (
                         <>
                         <button onClick={handleLogin}>Sign In</button>
+                        
                         <p>Don't have an account? <span onClick={() => setHasAccount(!hasAccount)}> Sign Up</span></p>
                         </>
                     ) : (

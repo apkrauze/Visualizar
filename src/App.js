@@ -1,23 +1,36 @@
 import React from 'react';
 import './App.css';
 import LoginPage from './Pages/LoginPage';
+import { NavLink, Route, Switch, } from "react-router-dom";
 import Hero from './Pages/Hero';
 import Profile from './Pages/Profile';
-import { Route, BrowserRouter as Router, Switch, Link, } from "react-router-dom";
-
-
-
+import { BrowserRouter as Router } from "react-router-dom";
+import Upload from './Pages/Upload';
 
 function App() {
 
   return (
     <Router>
-
+      <div className="link-container">
+        <NavLink activeClassName="active" exact to="/">
+          Hero
+        </NavLink>
+        <NavLink activeClassName="active" to="/Profile">
+          Profile
+        </NavLink>
+        <NavLink activeClassName="active" to="/Upload">
+          Upload
+        </NavLink>
+      </div>
       <Switch>
-        <Route path="/" exact component={LoginPage}></Route>
+        <Route path="/" exact component={LoginPage} /> 
+        <Route path="/Hero" component={Hero} />
+        <Route path="/Profile" component={Profile} />
+        <Route path="/Upload" component={Upload} />
       </Switch>
-
     </Router>
+
+
   );
 }
 

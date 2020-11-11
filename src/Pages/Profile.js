@@ -1,19 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 
-const Profile = ({handleLogout}) => {
+
+const Profile = () => {
 
     return(
         <section className="hero">
-            <nav>
-                <h2>Welcome</h2>
-                <Link to="/Hero">Home</Link>
-            </nav>
-            <header>
-                
-            </header>
-        </section>
+        <nav>
+          <h1 className="nav-h1 slide-in-blurred-left"><span className="nav-h1-span">V</span>isualizar</h1>
+          {/* <div className="logo-page-contain">
+            <img className="logo-page" src={logo} alt={"logo"} /> 
+          </div> */}
+            
+          
+         
+        </nav>
+      </section>
         
     )
 }

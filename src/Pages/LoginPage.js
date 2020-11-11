@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import fire from '../config/fire';
 import Login from '../Login';
-import Hero from './Hero';
+import Hero from '../Pages/Hero';
 import '../App.css';
 
 
