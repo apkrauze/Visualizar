@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
-import { storage } from '../config/fire';
-
-
+import React, { useState } from "react";
+import { storage } from "../config/fire";
+import Sidebar from "../Sidebar";
+import handleLogout from "./LoginPage";
+import navLogo from "../nav-logo.png";
+import loadGif from '../loadingGIF.gif'
 
 const Upload = () => {
     const [image, setImage] = useState(null);
     const [url, setUrl] = useState('');
     const [progress, setProgress] = useState(0);
     const [error, setError] = useState(null);
-
+};
 
 
 
@@ -41,36 +43,58 @@ const Upload = () => {
                 
             },
             () => {
-                storage
+                     storage
                     .ref("images")
                     .child(image.name)
                     .getDownloadURL()
                     .then(url => {
-                        setUrl(url)
+                        setUrl(url);
+                    }).then(alert('Thank you for uploading your picture!'));
+                })
+            
 
-                    });
-            }
-        )
-    };
+  console.log("image: ", image);
 
-    console.log("image: ", image)
-
-    return (
-        <div> Share your pictures!
-            <br />
-            <progress value={progress} max="100" />
-            <br />
-            <input type="file" onChange={handleChange} />
-            <div className="output">
-                {error && <div className="error">{error}</div>}
-                {image && <div className="correct">{image.name} </div>}
-            </div>
-            <button onClick={handleUpload}>Upload</button>
-            <br />
-            {url}
-            <br />
-            <img src={url || "http://via.placeholder.com/300x400"} alt="placeholder" />
+  return (
+    <section className="hero" id="outer-container">
+      <Sidebar
+        pageWrapId={"page-wrap"}
+        outerContainerId={"outer-container"}
+        handleLogout={handleLogout}
+      />
+      <div id="page-wrap">
+        <Sidebar
+          pageWrapId={"page-wrap"}
+          outerContainerId={"outer-container"}
+          // handleLogout={handleLogout}
+        />
+      </div>
+      <nav>
+        <img
+          className="logo-page slide-in-blurred-left"
+          src={navLogo}
+          alt={"logo"}
+        />
+      </nav>
+      <div className="upload-container">
+        <div className="upload-wrap">
+          <h1>Upload your picture!</h1>
+          <input className="upload-input" type="file" onChange={handleChange} />
+          <div className="img-container">
+          <p>Preview</p>
+            <img className ="img-wrap"src={url}/>
+          </div>
+          <button className="upload-button" onClick={handleUpload}>
+            Upload
+          </button>
+          {/* <div className="spinner-contain">
+          <img src={loadGif} alt={'spinner'}/>
+          
+          </div> */}
         </div>
-    )
+      </div>
+    </section>
+  );
 }
+
 export default Upload;
