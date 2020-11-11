@@ -10,13 +10,11 @@ const Hero = ({ handleLogout }) => {
             <div id="page-wrap">
                 <Sidebar pageWrapId={"page-wrap"} outerContainerId={"outer-container"} handleLogout={handleLogout} />
             </div>
-
             <nav>
                 <img className="logo-page slide-in-blurred-left" src={navLogo} alt={"logo"} />
             </nav>
-
         </section>
+        
     );
 };
-
 export default Hero;

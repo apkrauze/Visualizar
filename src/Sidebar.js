@@ -11,7 +11,7 @@ export default ({ handleLogout }) => {
   return (
     <Menu>
       <NavLink activeClassName="active" exact to="/">
-        Hero
+        Home
         </NavLink>
       <NavLink activeClassName="active" to="/Profile">
         Profile
