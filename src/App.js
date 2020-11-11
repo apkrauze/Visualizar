@@ -1,10 +1,7 @@
 import React from 'react';
 import './App.css';
 import LoginPage from './Pages/LoginPage';
-import Hero from './Pages/Hero';
-import Profile from './Pages/Profile';
-import { Route, BrowserRouter as Router, Switch, Link, } from "react-router-dom";
-
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 
 
