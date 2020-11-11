@@ -1,6 +1,5 @@
-import React from 'react';
+import {React} from 'react';
 import logo from './logoBG.png';
-
 const Login = (props) => {
 
     const { 
@@ -28,7 +27,7 @@ const Login = (props) => {
                 autoFocus 
                 required 
                 value={email} 
-                onChange={(e) => setEmail(e.target.value)} placeholder="Username">
+                onChange={(e) => setEmail(e.target.value)} placeholder="Email">
 
                 </input>
                 <p className="errorMsg">{emailError}</p>
@@ -55,8 +54,6 @@ const Login = (props) => {
                         </>
                     )}
                 </div>
-                
-
                 
             </div>
         </section>
