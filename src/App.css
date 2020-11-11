@@ -115,6 +115,13 @@ button {
   margin: auto;
 }
 /* ------------------HERO STYLES--------------------- */
+.output {
+  color: red;
+}
+
+.correct {
+  color: green;
+}
 
 .hero {
   width: 100%;
