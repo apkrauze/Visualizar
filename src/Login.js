@@ -21,6 +21,7 @@ const Login = (props) => {
             <div className="logo-contain">
                 <img className="logo-login" src={logo} alt={'logo'}/>
             </div>
+               
                 <label>Email</label>
                 <input 
                 type="text" 

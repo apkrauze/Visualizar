@@ -5,16 +5,11 @@ import handleLogout from "./LoginPage";
 import navLogo from "../nav-logo.png";
 import loadGif from '../loadingGIF.gif'
 
-const Upload = () => {
-    const [image, setImage] = useState(null);
-    const [url, setUrl] = useState('');
-    const [progress, setProgress] = useState(0);
-    const [error, setError] = useState(null);
-};
-
-
-
-    const types = ['image/png', 'image/jpeg', 'image/jpg', 'image/gif']
+const Upload = ({ handleLogout }) => {
+  const [image, setImage] = useState(null);
+  const [url, setUrl] = useState("");
+  const [ifShownErr, setErrFlag] = useState(true);}
+  
 
     const handleChange = e => {
         let selected = e.target.files[0]
@@ -23,50 +18,50 @@ const Upload = () => {
             setError('');
         } else {
             setImage(null);
-            setError('Please select an image file (png, jpg, or gif)');
+            setError('Please select an image file (png, jpg, or gif)');}
 
-        }
-    };
+  const handleUpload = () => {
+    if (image === null){
+      setErrFlag(false);
+      return;
+  } else {
+      setErrFlag(true);
+  }
 
-    const handleUpload = () => {
-        const uploadTask = storage.ref(`images/${image.name}`).put(image);
-        uploadTask.on(
-            "state_changed",
-            snapshot => {
-                const progress = Math.round(
-                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-                );
-                setProgress(progress);
-            },
-            error => {
-                setError(error)
-                
-            },
-            () => {
-                     storage
-                    .ref("images")
-                    .child(image.name)
-                    .getDownloadURL()
-                    .then(url => {
-                        setUrl(url);
-                    }).then(alert('Thank you for uploading your picture!'));
-                })
-            
+    const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const progress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+        
+      },
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        storage
+          .ref("images")
+          .child(image.name)
+          .getDownloadURL()
+          .then((url) => {
+            setUrl(url);
+          }).then(alert('Thank you for uploading your picture!'));
+      }
+    );
+  };
 
   console.log("image: ", image);
 
   return (
     <section className="hero" id="outer-container">
-      <Sidebar
-        pageWrapId={"page-wrap"}
-        outerContainerId={"outer-container"}
-        handleLogout={handleLogout}
-      />
+      
       <div id="page-wrap">
         <Sidebar
           pageWrapId={"page-wrap"}
           outerContainerId={"outer-container"}
-          // handleLogout={handleLogout}
+          handleLogout={handleLogout}
         />
       </div>
       <nav>
@@ -87,6 +82,7 @@ const Upload = () => {
           <button className="upload-button" onClick={handleUpload}>
             Upload
           </button>
+          <p hidden={ifShownErr}>File is not selected</p>
           {/* <div className="spinner-contain">
           <img src={loadGif} alt={'spinner'}/>
           

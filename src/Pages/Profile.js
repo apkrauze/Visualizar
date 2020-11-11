@@ -19,6 +19,8 @@ const Profile = () => {
           outerContainerId={"outer-container"}
         />
       </div>
+      
+      <input type="text"></input>
     </section>
   );
 };
