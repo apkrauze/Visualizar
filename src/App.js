@@ -11,17 +11,7 @@ function App() {
 
   return (
     <Router>
-      <div className="link-container">
-        <NavLink activeClassName="active" exact to="/">
-          Hero
-        </NavLink>
-        <NavLink activeClassName="active" to="/Profile">
-          Profile
-        </NavLink>
-        <NavLink activeClassName="active" to="/Upload">
-          Upload
-        </NavLink>
-      </div>
+      
       <Switch>
         <Route path="/" exact component={LoginPage} /> 
         <Route path="/Hero" component={Hero} />
