@@ -1,9 +1,13 @@
 import React from 'react';
 
-const FancyModal = ({ selectedImage }) => {
+const FancyModal = ({ selectedImage, setSelectedImage }) => {
+
+    const handleClick = (e) => {
+        setSelectedImage(null)
+    }
 
     return (
-        <div className ="backdrop">
+        <div className ="backdrop" onClick={handleClick} >
             <img src={selectedImage} alt="on click image will be enlarged"></img>
         </div>
     )

@@ -9,7 +9,10 @@ import FancyModal from "../comp/fancyModal";
 
 const Hero = ({ handleLogout }) => {
   const [selectedImage, setSelectedImage] = useState(null)  
-    return (
+    
+  
+  
+  return (
     <section className="hero" id="outer-container">
       <div id="page-wrap">
         <Sidebar
@@ -31,7 +34,7 @@ const Hero = ({ handleLogout }) => {
       </section>
       <div id="page-wrap">
         <ShowImage setSelectedImage={setSelectedImage}/>
-        <FancyModal selectedImage= {selectedImage} />
+        { selectedImage && <FancyModal selectedImage= {selectedImage} setSelectedImage={setSelectedImage}/> }
       </div>
     </section>
   );
