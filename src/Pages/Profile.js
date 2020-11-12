@@ -19,7 +19,9 @@ const Profile = () => {
           outerContainerId={"outer-container"}
         />
       </div>
-      
+      <video autoPlay muted loop id="myVideo">
+                <source src="desktopCover.mp4" type="video/mp4"/>
+            </video>
     </section>
   );
 };
