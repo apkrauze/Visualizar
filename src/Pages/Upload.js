@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { storage } from "../config/fire";
+import { firestore, storage, timesstamp } from "../config/fire";
 import Sidebar from "../Sidebar";
 import handleLogout from "./LoginPage";
 import navLogo from "../nav-logo.png";
@@ -8,6 +8,8 @@ import loadGif from "../loadingGIF.gif";
 const Upload = ({ handleLogout }) => {
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState("");
+  const [ifShownErr, setErrFlag] = useState(true);
+
 
   const handleChange = (e) => {
     if (e.target.files[0]) {
@@ -16,7 +18,16 @@ const Upload = ({ handleLogout }) => {
   };
 
   const handleUpload = () => {
+    if (image === null) {
+      setErrFlag(false);
+      return;
+    } else {
+      setErrFlag(true);
+    }
+
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    const collectionRef = firestore.collection('images'); 
+
     uploadTask.on(
       "state_changed",
       (snapshot) => {
@@ -34,8 +45,9 @@ const Upload = ({ handleLogout }) => {
           .getDownloadURL()
           .then((url) => {
             setUrl(url);
-          })
-          .then(alert("Thank you for uploading your picture!"));
+          const createdAt = timesstamp();
+          collectionRef.add({ url, createdAt});
+          }).then(alert('Thank you for uploading your picture!'));
       }
     );
   };
@@ -43,13 +55,15 @@ const Upload = ({ handleLogout }) => {
   console.log("image: ", image);
 
   return (
-    <section className="hero" id="outer-container"> 
-      <Sidebar
-        pageWrapId={"page-wrap"}
-        outerContainerId={"outer-container"}
-        handleLogout={handleLogout}
-      />
+    <section className="hero" id="outer-container">
 
+      <div id="page-wrap">
+        <Sidebar
+          pageWrapId={"page-wrap"}
+          outerContainerId={"outer-container"}
+          handleLogout={handleLogout}
+        />
+      </div>
       <nav>
         <img
           className="logo-page slide-in-blurred-left"
@@ -68,6 +82,7 @@ const Upload = ({ handleLogout }) => {
           <button className="upload-button" onClick={handleUpload}>
             Upload
           </button>
+          <p hidden={ifShownErr}>File is not selected</p>
           {/* <div className="spinner-contain">
           <img src={loadGif} alt={'spinner'}/>
           

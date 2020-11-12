@@ -19,6 +19,7 @@ const Profile = () => {
           outerContainerId={"outer-container"}
         />
       </div>
+      
     </section>
   );
 };

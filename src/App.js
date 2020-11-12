@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import LoginPage from './Pages/LoginPage';
-import { NavLink, Route, Switch, } from "react-router-dom";
+import { Route, Switch, } from "react-router-dom";
 import Hero from './Pages/Hero';
 import Profile from './Pages/Profile';
 import { BrowserRouter as Router } from "react-router-dom";
@@ -11,7 +11,6 @@ function App() {
 
   return (
     <Router>
-      
       <Switch>
         <Route path="/" exact component={LoginPage} /> 
         <Route path="/Hero" component={Hero} />
@@ -19,8 +18,6 @@ function App() {
         <Route path="/Upload" component={Upload} />
       </Switch>
     </Router>
-
-
   );
 }
 
