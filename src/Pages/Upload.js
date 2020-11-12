@@ -14,6 +14,7 @@ const Upload = ({ handleLogout }) => {
   const handleChange = (e) => {
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
+      
     }
   };  
 
