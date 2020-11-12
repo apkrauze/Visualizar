@@ -25,9 +25,9 @@ const Upload = ({ handleLogout }) => {
       setErrFlag(true);
     }
 
-    const collectionRef = fireStore.collection('images');
+    const collectionRef = firestore.collection('images');
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
-    const collectionRef = firestore.collection('images'); 
+  
 
     uploadTask.on(
       "state_changed",
