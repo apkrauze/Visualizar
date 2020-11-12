@@ -20,7 +20,6 @@ const Profile = () => {
         />
       </div>
       
-      <input type="text"></input>
     </section>
   );
 };
