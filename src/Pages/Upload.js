@@ -76,13 +76,13 @@ const Upload = ({ handleLogout }) => {
           <h1>Upload your picture!</h1>
           <input className="upload-input" type="file" onChange={handleChange} />
           <p className="file-error" hidden={ifShownErr}>File is not selected</p>
+          <button className="upload-button" onClick={handleUpload}>
+            Upload!
+          </button>
           <div className="img-container">
             <p>Preview</p>
             <img className="img-wrap" src={url} />
           </div>
-          <button className="upload-button" onClick={handleUpload}>
-            +
-          </button>
           {/* <div className="spinner-contain">
           <img src={loadGif} alt={'spinner'}/>
           
