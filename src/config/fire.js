@@ -1,5 +1,6 @@
  import firebase from 'firebase';
- import 'firebase/storage'
+ import 'firebase/storage';
+ import 'firebase/firestore';
  
  
 
@@ -17,9 +18,8 @@
   };
   const fire = firebase.initializeApp(firebaseConfig);
   const storage = firebase.storage();
-  
-  
+  const firestore = firebase.firestore();
+  const timesstamp = firebase.firestore.FieldValue.serverTimestamp;
   
 
-
-  export { storage, fire as default };
+  export { storage, fire as default, firestore, timesstamp};
