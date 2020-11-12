@@ -3,7 +3,7 @@ import { firestore, storage, timesstamp } from "../config/fire";
 import Sidebar from "../Sidebar";
 import handleLogout from "./LoginPage";
 import navLogo from "../nav-logo.png";
-import loadGif from '../loadingGIF.gif'
+import loadGif from "../loadingGIF.gif";
 
 const Upload = ({ handleLogout }) => {
   const [image, setImage] = useState(null);
@@ -35,7 +35,6 @@ const Upload = ({ handleLogout }) => {
         const progress = Math.round(
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         );
-
       },
       (error) => {
         console.log(error);
@@ -77,14 +76,14 @@ const Upload = ({ handleLogout }) => {
         <div className="upload-wrap">
           <h1>Upload your picture!</h1>
           <input className="upload-input" type="file" onChange={handleChange} />
+          <p className="file-error" hidden={ifShownErr}>File is not selected</p>
           <div className="img-container">
             <p>Preview</p>
             <img className="img-wrap" src={url} />
           </div>
           <button className="upload-button" onClick={handleUpload}>
-            Upload
+            +
           </button>
-          <p className="error" hidden={ifShownErr}>File is not selected</p>
           {/* <div className="spinner-contain">
           <img src={loadGif} alt={'spinner'}/>
           
