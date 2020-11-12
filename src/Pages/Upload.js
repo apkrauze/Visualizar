@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { storage } from "../config/fire";
+import { fireStore, storage } from "../config/fire";
 import Sidebar from "../Sidebar";
 import handleLogout from "./LoginPage";
 import navLogo from "../nav-logo.png";
@@ -8,17 +8,15 @@ import loadGif from '../loadingGIF.gif'
 const Upload = ({ handleLogout }) => {
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState("");
-  const [ifShownErr, setErrFlag] = useState(true);}
+  const [ifShownErr, setErrFlag] = useState(true);
+
   
 
-    const handleChange = e => {
-        let selected = e.target.files[0]
-        if (selected && types.includes(selected.type)) { //first file selected, and if it is png or jpeg.
-            setImage(selected);
-            setError('');
-        } else {
-            setImage(null);
-            setError('Please select an image file (png, jpg, or gif)');}
+  const handleChange = (e) => {
+    if (e.target.files[0]) {
+      setImage(e.target.files[0]);
+    }
+  };  
 
   const handleUpload = () => {
     if (image === null){
@@ -28,6 +26,7 @@ const Upload = ({ handleLogout }) => {
       setErrFlag(true);
   }
 
+    const collectionRef = fireStore.collection('images');
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
     uploadTask.on(
       "state_changed",
@@ -82,7 +81,7 @@ const Upload = ({ handleLogout }) => {
           <button className="upload-button" onClick={handleUpload}>
             Upload
           </button>
-          <p hidden={ifShownErr}>File is not selected</p>
+          <p className="error" hidden={ifShownErr}>File is not selected</p>
           {/* <div className="spinner-contain">
           <img src={loadGif} alt={'spinner'}/>
           
@@ -91,6 +90,19 @@ const Upload = ({ handleLogout }) => {
       </div>
     </section>
   );
-}
-
+};
 export default Upload;
+
+
+
+
+/*
+const [ifShownErr, setErrFlag] = useState(true);
+const handleUpload = () => {
+        if (image === null){
+            setErrFlag(false);
+            return;
+        } else {
+            setErrFlag(true);
+        }
+<p hidden={ifShownErr}>File is not selected</p> */

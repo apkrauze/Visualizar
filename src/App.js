@@ -17,7 +17,7 @@ function App() {
         <Route path="/Profile" component={Profile} />
         <Route path="/Upload" component={Upload} />
       </Switch>
-    </Router>
+    </Router>//figure out how to route the ImageDisplay to Hero..
   );
 }
 
