@@ -19,8 +19,8 @@ const Hero = ({ handleLogout }) => {
                 <img className="logo-page slide-in-blurred-left" src={navLogo} alt={"logo"} />
             </nav>
             <div id="page-wrap">
-                <ShowImage />
-            </div>
+                <ShowImage/>
+            </div> 
             
         </section>
         

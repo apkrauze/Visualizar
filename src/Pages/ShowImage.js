@@ -7,15 +7,12 @@ const ShowImage = () => {
  
  
  return(
-        
             <p>{ docs && docs.map(doc =>(
                 <div className="img-wrap" key={doc.id}>
                     <img src={doc.url} alt="uploaded image" />
                 </div>
-            ))}</p>
-        
+            ))}</p>   
     )
-
 }
 
 export default ShowImage;

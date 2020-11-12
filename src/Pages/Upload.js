@@ -14,6 +14,7 @@ const Upload = ({ handleLogout }) => {
   const handleChange = (e) => {
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
+      
     }
   };
 
@@ -81,7 +82,7 @@ const Upload = ({ handleLogout }) => {
             <img className="img-wrap" src={url} />
           </div>
           <button className="upload-button" onClick={handleUpload}>
-            Upload
+            Upload 
           </button>
           <p hidden={ifShownErr}>File is not selected</p>
           {/* <div className="spinner-contain">
