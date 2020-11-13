@@ -30,11 +30,11 @@ const Hero = ({ handleLogout }) => {
       </nav>
       <section className="gallery-wrap">
           <h1>Gallery</h1>
-          <p>See the lastest pictures uploaded to the gallery</p>
+          <p>See the latest pictures uploaded to the gallery</p>
       </section>
       <div id="page-wrap">
         <ShowImage setSelectedImage={setSelectedImage}/>
-        { selectedImage && <FancyModal selectedImage= {selectedImage} setSelectedImage={setSelectedImage}/> }
+        { selectedImage && <FancyModal selectedImage={selectedImage} setSelectedImage={setSelectedImage}/> }
       </div>
     </section>
   );
