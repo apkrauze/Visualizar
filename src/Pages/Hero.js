@@ -29,8 +29,8 @@ const Hero = ({ handleLogout }) => {
         />
       </nav>
       <section className="gallery-wrap">
-          <h1>Gallery</h1>
-          <p>See the latest pictures uploaded to the gallery</p>
+          <h1 className="puff-in-bottom">Gallery</h1>
+          <p className="puff-in-bottom">See the latest pictures uploaded to the gallery</p>
       </section>
       <div id="page-wrap">
         <ShowImage setSelectedImage={setSelectedImage}/>
