@@ -11,7 +11,6 @@ const Upload = ({ handleLogout }) => {
   const [ifShownErr, setErrFlag] = useState(true);
   const [imagePreview, setImagePreview] = useState(null);
 
-
   const handleChange = (e) => {
     const selected = e.target.files[0];
     const allowed = ['image/png', 'image/jpeg', 'image/jpg', 'image/gif'];
@@ -37,7 +36,7 @@ const Upload = ({ handleLogout }) => {
 
     const collectionRef = firestore.collection('images');
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
-  
+
 
     uploadTask.on(
       "state_changed",
@@ -56,9 +55,10 @@ const Upload = ({ handleLogout }) => {
           .getDownloadURL()
           .then((url) => {
             setUrl(url);
-          const createdAt = timesstamp();
-          collectionRef.add({ url, createdAt});
-          }).then(alert('Thank you for uploading your picture!'));
+            const createdAt = timesstamp();
+            collectionRef.add({ url, createdAt });
+          })
+          .then(alert("Thank you for uploading your picture!"));
       }
     );
   };
@@ -67,7 +67,6 @@ const Upload = ({ handleLogout }) => {
 
   return (
     <section className="hero" id="outer-container">
-
       <div id="page-wrap">
         <Sidebar
           pageWrapId={"page-wrap"}
@@ -84,9 +83,18 @@ const Upload = ({ handleLogout }) => {
       </nav>
       <div className="upload-container">
         <div className="upload-wrap">
-          <h1>Upload your picture!</h1>
-          <input className="upload-input" type="file" onChange={handleChange} />
-          <p className="file-error" hidden={ifShownErr}>Please select a valid file type</p>
+          <h1 className="puff-in-bottom">Upload your picture!</h1>
+          <label className="upload-input">
+            Choose a file
+            <input
+              type="file"
+              onChange={handleChange}
+            />
+          </label>
+
+          <p className="file-error" hidden={ifShownErr}>
+            File is not selected
+          </p>
           <button className="upload-button" onClick={handleUpload}>
             Upload!
           </button>
