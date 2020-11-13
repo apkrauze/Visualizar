@@ -7,6 +7,7 @@ import Profile from './Pages/Profile';
 import { BrowserRouter as Router } from "react-router-dom";
 import Upload from './Pages/Upload';
 
+
 function App() {
 
   return (
@@ -15,7 +16,7 @@ function App() {
         <Route path="/" exact component={LoginPage} /> 
         <Route path="/Hero" component={Hero} />
         <Route path="/Profile" component={Profile} />
-        <Route path="/Upload" component={Upload} />
+        <Route path="/Upload" component={Upload} /> 
       </Switch>
     </Router>
   );

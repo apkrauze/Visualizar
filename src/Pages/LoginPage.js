@@ -41,6 +41,7 @@ function LoginPage() {
         }
       });
   };
+  
 
   const handleSignup = () => {
     clearErrors();
@@ -86,7 +87,7 @@ function LoginPage() {
       {user ? (
          <Hero handleLogout={handleLogout}/>
       ) : (
-        <Login 
+        <Login
         email={email} 
         setEmail={setEmail} 
         password={password} 
@@ -97,7 +98,7 @@ function LoginPage() {
         setHasAccount={setHasAccount}
         emailError={emailError}
         passwordError={passwordError}
-        />
+        /> 
       )}
         
         
