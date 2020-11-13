@@ -3,7 +3,11 @@ import { Link, NavLink } from "react-router-dom";
 import Sidebar from "../Sidebar";
 import navLogo from "../nav-logo.png";
 
+
+
 const Profile = () => {
+
+ 
   return (
     <section className="hero">
       <nav>

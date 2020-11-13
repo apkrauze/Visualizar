@@ -9,12 +9,21 @@ const Upload = ({ handleLogout }) => {
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState("");
   const [ifShownErr, setErrFlag] = useState(true);
+  const [imagePreview, setImagePreview] = useState(null);
 
 
   const handleChange = (e) => {
-    if (e.target.files[0]) {
-      setImage(e.target.files[0]);
-      
+    const selected = e.target.files[0];
+    const allowed = ['image/png', 'image/jpeg', 'image/jpg', 'image/gif'];
+    if (selected && allowed.includes(selected.type)) {
+      let reader= new FileReader();
+      reader.onloadend = () => {
+      setImage(selected);  
+      setImagePreview(reader.result)
+          }
+          reader.readAsDataURL(selected);
+    } else {
+      alert('This file is not supported, please select an image.')
     }
   };  
 
@@ -77,13 +86,14 @@ const Upload = ({ handleLogout }) => {
         <div className="upload-wrap">
           <h1>Upload your picture!</h1>
           <input className="upload-input" type="file" onChange={handleChange} />
-          <p className="file-error" hidden={ifShownErr}>File is not selected</p>
+          <p className="file-error" hidden={ifShownErr}>Please select a valid file type</p>
           <button className="upload-button" onClick={handleUpload}>
             Upload!
           </button>
           <div className="img-container">
             <p>Preview</p>
-            <img className="img-wrap" src={url} />
+            <div className="imagePreview"></div>
+            <img className="img-wrap" src={imagePreview} />
           </div>
           {/* <div className="spinner-contain">
           <img src={loadGif} alt={'spinner'}/>
