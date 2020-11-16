@@ -14,6 +14,8 @@ const Login = (props) => {
     setHasAccount,
     emailError,
     passwordError,
+    displayName,
+    setDisplayName
   } = props;
 
   return (
@@ -27,6 +29,15 @@ const Login = (props) => {
         <div className="logo-contain">
           <img className="logo-login" src={logo} alt={"logo"} />
         </div>
+        <label>Display name</label>
+        <input
+          type="text"
+          autoFocus
+          required
+          value={displayName}
+          onChange={(e) => setDisplayName(e.target.value)}
+          placeholder="Display Name"
+        ></input>
 
         <label>Email</label>
         <input
@@ -46,12 +57,11 @@ const Login = (props) => {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
         ></input>
-        <p className="errorMsg">{passwordError}</p>
+        <p className="errorMsg">{passwordError}</p> 
         <div className="btnContainer">
           {hasAccount ? (
             <>
               <button onClick={handleLogin}>Sign In</button>
-
               <p>
                 Don't have an account?{" "}
                 <span onClick={() => setHasAccount(!hasAccount)}> Sign Up</span>

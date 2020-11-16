@@ -6,11 +6,14 @@ import navLogo from "../nav-logo.png";
 import Footer from "./Footer";
 import ShowImage from "./ShowImage";
 import FancyModal from "../comp/fancyModal";
+import firebase from 'firebase/app'
 
-const Hero = ({ handleLogout }) => {
+
+const Hero = ({ handleLogout, user }) => {
   const [selectedImage, setSelectedImage] = useState(null)  
-    
-  
+  //console.log('user=', user)
+  console.log(firebase.auth().currentUser)
+   
   
   return (
     <section className="hero" id="outer-container">
@@ -31,6 +34,8 @@ const Hero = ({ handleLogout }) => {
       <section className="gallery-wrap">
           <h1 className="puff-in-bottom">Gallery</h1>
           <p className="puff-in-bottom">See the latest pictures uploaded to the gallery</p>
+          {user && <p>hello {user.displayName}</p>}
+          <p>Hello {firebase.auth().currentUser.displayName}</p>
       </section>
       <div id="page-wrap">
         <ShowImage setSelectedImage={setSelectedImage}/>
