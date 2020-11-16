@@ -68,8 +68,6 @@ function LoginPage() {
           setPasswordError(err.message);
           break;
           default:
-          
-        
       }
     });
 
