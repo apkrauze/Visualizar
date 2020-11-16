@@ -1,11 +1,13 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
 import Sidebar from "../Sidebar";
 import navLogo from "../nav-logo.png";
+import firebase from 'firebase/app';
+import FancyModal from "../comp/fancyModal";
+import ShowImage from "./ShowImage";
 
 
 
-const Profile = () => {
+const Profile = ({setSelectedImage, currentUser, handleUpload}) => {
 
  
   return (
@@ -23,7 +25,10 @@ const Profile = () => {
           outerContainerId={"outer-container"}
         />
       </div>
+      <p>Hello {firebase.auth().currentUser.displayName}</p>
+      
     </section>
+
   );
 };
 

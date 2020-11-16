@@ -3,6 +3,7 @@ import fire from '../config/fire';
 import Login from '../Login';
 import Hero from '../Pages/Hero';
 import '../App.css';
+import Sidebar from '../Sidebar';
 
 
 function LoginPage({ user, setUser }) { //setting the states for our login and signup
@@ -13,6 +14,11 @@ function LoginPage({ user, setUser }) { //setting the states for our login and s
   const [hasAccount, setHasAccount] = useState(false);
   const [displayName, setDisplayName] = useState('');
 
+  
+  const clearInputs = () => {
+    setEmail('');
+    setPassword('');
+  }
 
   const clearErrors = () => {
     setEmailError('');
@@ -44,31 +50,30 @@ function LoginPage({ user, setUser }) { //setting the states for our login and s
   const handleSignup = () => {
     clearErrors();
     fire
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(x => {
-        return (
-
-          fire.auth().currentUser.updateProfile({
-            displayName: displayName,
-          })
-        )
-      })
-      .catch(err => {
-
-        switch (err.code) {
-          case "auth/email-already-in-use":
-          case "auth/invalid-email":
-            setEmailError(err.message);
-            break;
-          case "auth/weak-password":
-            setPasswordError(err.message);
-            break;
-          default:
-            console.log(err)
-        }}
+    .auth()
+    .createUserWithEmailAndPassword(email,password)
+    .then(x => {
+      return(
+        fire.auth().currentUser.updateProfile({
+          displayName: displayName,
+        })
       )
-  };
+    })
+    .catch(err => {
+      switch(err.code){
+        case "auth/email-already-in-use":
+        case "auth/invalid-email":
+          setEmailError(err.message);
+          break;
+        case "auth/weak-password":
+          setPasswordError(err.message);
+          break;
+        
+      }
+    });
+
+        
+  
 
   //similar to handleLogin, but now we are creating a user and catching errors relevant to email and password, then changing state to display them
 
@@ -76,33 +81,45 @@ function LoginPage({ user, setUser }) { //setting the states for our login and s
     fire.auth().signOut();
   };
 
-  //firebase signout method
+  const authListener = () => {
+    fire.auth().onAuthStateChanged((user) =>{
+      if (user) {
+        clearInputs();
+        setUser(user);
+      } else {
+        setUser('');
+      }
+    },);
+  };
 
-  //simply calling the authListener function
+  useEffect(() => {
+    authListener();
+  },[]);
 
   return (
     <div className="App">
       {user ? (
         <Hero handleLogout={handleLogout} />
       ) : (
-          <Login
-            email={email}
-            setEmail={setEmail}
-            password={password}
-            setPassword={setPassword}
-            handleLogin={handleLogin}
-            handleSignup={handleSignup}
-            hasAccount={hasAccount}
-            setHasAccount={setHasAccount}
-            emailError={emailError}
-            passwordError={passwordError}
-            setDisplayName={setDisplayName}
-          />
-        )}
-
-
+        <Login
+        email={email} 
+        setEmail={setEmail} 
+        password={password} 
+        setPassword={setPassword}
+        handleLogin={handleLogin}
+        handleSignup={handleSignup}
+        hasAccount={hasAccount}
+        setHasAccount={setHasAccount}
+        emailError={emailError}
+        passwordError={passwordError}
+        //displayName={displayName}
+        setDisplayName={setDisplayName}
+        /> 
+      )}
+        
+        
     </div>
   );
-}
+}}
 
 export default LoginPage;
