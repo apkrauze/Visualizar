@@ -4,9 +4,11 @@ import Login from '../Login';
 import Hero from '../Pages/Hero';
 import '../App.css';
 import Sidebar from '../Sidebar';
+import Profile from './Profile';
 
 
-function LoginPage({ user, setUser }) { //setting the states for our login and signup
+function LoginPage() {
+  const [user, setUser] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
@@ -24,15 +26,14 @@ function LoginPage({ user, setUser }) { //setting the states for our login and s
     setEmailError('');
     setPasswordError('');
   }
-  //clear functions, just clearing the input, or errors by setting the state to an empty string.
 
   const handleLogin = () => {
     clearErrors();
     fire
       .auth()
-      .signInWithEmailAndPassword(email, password)
+      .signInWithEmailAndPassword(email,password)
       .catch(err => {
-        switch (err.code) {
+        switch(err.code){
           case "auth/invalid-email":
           case "auth/user-disabled":
           case "auth/user-not-found":
@@ -44,8 +45,7 @@ function LoginPage({ user, setUser }) { //setting the states for our login and s
         }
       });
   };
-  //using firebase authentication using email and password signup. then changing state to display error messages for email and password
-
+  
 
   const handleSignup = () => {
     clearErrors();
@@ -72,10 +72,7 @@ function LoginPage({ user, setUser }) { //setting the states for our login and s
       }
     });
 
-        
-  
-
-  //similar to handleLogin, but now we are creating a user and catching errors relevant to email and password, then changing state to display them
+  };
 
   const handleLogout = () => {
     fire.auth().signOut();
@@ -96,10 +93,12 @@ function LoginPage({ user, setUser }) { //setting the states for our login and s
     authListener();
   },[]);
 
-  return (
+
+    return (
     <div className="App">
       {user ? (
-        <Hero handleLogout={handleLogout} />
+         <Hero handleLogout={handleLogout}/>
+         
       ) : (
         <Login
         email={email} 
@@ -120,6 +119,6 @@ function LoginPage({ user, setUser }) { //setting the states for our login and s
         
     </div>
   );
-}}
+}
 
 export default LoginPage;
