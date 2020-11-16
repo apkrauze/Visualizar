@@ -1,11 +1,7 @@
 import React from 'react';
-import Switch from 'react-bootstrap/esm/Switch';
 import { slide as Menu } from 'react-burger-menu';
-import { NavLink, Route, BrowserRouter as Router } from 'react-router-dom';
-import LoginPage from './Pages/LoginPage';
-import Profile from './Pages/Profile';
-import Upload from './Pages/Upload';
-import Hero from './Pages/Hero';
+import { NavLink, BrowserRouter as Router } from 'react-router-dom';
+
 
 export default ({ handleLogout }) => {
   return (
@@ -19,7 +15,7 @@ export default ({ handleLogout }) => {
       <NavLink activeClassName="active" to="/Upload">
         Upload
         </NavLink>
-      <a className="menu-item" href="htttp://www.youtube.com">
+      <a className="menu-item">
         <button className="logout-button" onClick={handleLogout}>Logout</button>
       </a>
     </Menu>
