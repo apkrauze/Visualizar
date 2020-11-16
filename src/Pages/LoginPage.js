@@ -3,8 +3,6 @@ import fire from '../config/fire';
 import Login from '../Login';
 import Hero from '../Pages/Hero';
 import '../App.css';
-import Sidebar from '../Sidebar';
-import Profile from './Profile';
 
 
 function LoginPage() {
@@ -42,6 +40,7 @@ function LoginPage() {
           case "auth/wrong-password":
             setPasswordError(err.message);
             break;
+            default:
         }
       });
   };
@@ -68,6 +67,8 @@ function LoginPage() {
         case "auth/weak-password":
           setPasswordError(err.message);
           break;
+          default:
+          
         
       }
     });
@@ -91,7 +92,7 @@ function LoginPage() {
 
   useEffect(() => {
     authListener();
-  },[]);
+  },);
 
 
     return (
