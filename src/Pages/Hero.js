@@ -1,17 +1,15 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import Upload from "./Upload";
 import Sidebar from "../Sidebar";
 import navLogo from "../nav-logo.png";
-import Footer from "./Footer";
 import ShowImage from "./ShowImage";
 import FancyModal from "../comp/fancyModal";
 
+
+
 const Hero = ({ handleLogout }) => {
   const [selectedImage, setSelectedImage] = useState(null)  
+  
     
-  
-  
   return (
     <section className="hero" id="outer-container">
       <div id="page-wrap">
@@ -31,11 +29,14 @@ const Hero = ({ handleLogout }) => {
       <section className="gallery-wrap">
           <h1 className="puff-in-bottom">Gallery</h1>
           <p className="puff-in-bottom">See the latest pictures uploaded to the gallery</p>
+    
       </section>
       <div id="page-wrap">
         <ShowImage setSelectedImage={setSelectedImage}/>
-        { selectedImage && <FancyModal selectedImage= {selectedImage} setSelectedImage={setSelectedImage}/> }
+        { selectedImage && <FancyModal selectedImage={selectedImage} setSelectedImage={setSelectedImage} /> }
       </div>
+
+      
     </section>
   );
 };

@@ -2,8 +2,7 @@
  import 'firebase/storage';
  import 'firebase/firestore';
  
- 
- var firebaseConfig = {
+  var firebaseConfig = {
     apiKey: "AIzaSyAbvxESsH30worIFcgDhWzdKsiVl4Z42jQ",
     authDomain: "visualizar-9141e.firebaseapp.com",
     databaseURL: "https://visualizar-9141e.firebaseio.com",

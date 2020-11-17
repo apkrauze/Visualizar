@@ -14,9 +14,12 @@ const Login = (props) => {
     setHasAccount,
     emailError,
     passwordError,
+    displayName,
+    setDisplayName,
   } = props;
 
   return (
+
     <section className="login">
       <div className="dekstop-login-view">
         <video autoPlay muted loop id="myVideo">
@@ -58,14 +61,23 @@ const Login = (props) => {
               </p>
             </>
           ) : (
-            <>
-              <button onClick={handleSignup}>Sign Up</button>
-              <p>
-                Have an account?{" "}
-                <span onClick={() => setHasAccount(!hasAccount)}> Sign In</span>
-              </p>
-            </>
-          )}
+              <>
+                <label>User</label>
+                <input
+                  type="text"
+                  autoFocus
+                  required
+                  value={displayName}
+                  onChange={(e) => setDisplayName(e.target.value)}
+                  placeholder="User name"
+                ></input>
+                <button onClick={handleSignup}>Sign Up</button>
+                <p>
+                  Have an account?{" "}
+                  <span onClick={() => setHasAccount(!hasAccount)}> Sign In</span>
+                </p>
+              </>
+            )}
         </div>
       </div>
     </section>

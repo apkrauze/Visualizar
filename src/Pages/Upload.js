@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { firestore, storage, timesstamp } from "../config/fire";
 import Sidebar from "../Sidebar";
-import handleLogout from "./LoginPage";
 import navLogo from "../nav-logo.png";
-import loadGif from "../loadingGIF.gif";
 
-const Upload = ({ handleLogout }) => {
+
+const Upload = ({handleLogout}) => {
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState("");
   const [ifShownErr, setErrFlag] = useState(true);
@@ -91,6 +90,7 @@ const Upload = ({ handleLogout }) => {
               type="file"
               onChange={handleChange}
             />
+            
           </label>
 
           <p className="file-error" hidden={ifShownErr}>
@@ -106,7 +106,6 @@ const Upload = ({ handleLogout }) => {
           </div>
           {/* <div className="spinner-contain">
           <img src={loadGif} alt={'spinner'}/>
-          
           </div> */}
         </div>
       </div>

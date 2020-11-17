@@ -3,16 +3,21 @@ import fire from '../config/fire';
 import Login from '../Login';
 import Hero from '../Pages/Hero';
 import '../App.css';
+import Sidebar from '../Sidebar';
 
 
-function LoginPage() {
+
+function LoginPage(  ) {
   const [user, setUser] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [hasAccount, setHasAccount] = useState(false);
+  const [displayName, setDisplayName] = useState('');
+  
 
+  
   const clearInputs = () => {
     setEmail('');
     setPassword('');
@@ -38,9 +43,11 @@ function LoginPage() {
           case "auth/wrong-password":
             setPasswordError(err.message);
             break;
+            default:
         }
       });
   };
+  
   
 
   const handleSignup = () => {
@@ -48,6 +55,13 @@ function LoginPage() {
     fire
     .auth()
     .createUserWithEmailAndPassword(email,password)
+    .then(x => {
+      return(
+        fire.auth().currentUser.updateProfile({
+          displayName: displayName,
+        })
+      )
+    })
     .catch(err => {
       switch(err.code){
         case "auth/email-already-in-use":
@@ -57,14 +71,13 @@ function LoginPage() {
         case "auth/weak-password":
           setPasswordError(err.message);
           break;
+          default:
       }
     });
 
   };
 
-  const handleLogout = () => {
-    fire.auth().signOut();
-  };
+  
 
   const authListener = () => {
     fire.auth().onAuthStateChanged((user) =>{
@@ -74,7 +87,7 @@ function LoginPage() {
       } else {
         setUser('');
       }
-    });
+    },);
   };
 
   useEffect(() => {
@@ -85,7 +98,7 @@ function LoginPage() {
     return (
     <div className="App">
       {user ? (
-         <Hero handleLogout={handleLogout}/>
+         <Hero/>
       ) : (
         <Login
         email={email} 
@@ -98,6 +111,8 @@ function LoginPage() {
         setHasAccount={setHasAccount}
         emailError={emailError}
         passwordError={passwordError}
+        //displayName={displayName}
+        setDisplayName={setDisplayName}
         /> 
       )}
         
