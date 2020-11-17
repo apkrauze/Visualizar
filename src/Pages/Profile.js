@@ -2,13 +2,12 @@ import React from "react";
 import Sidebar from "../Sidebar";
 import navLogo from "../nav-logo.png";
 import firebase from 'firebase/app';
-import FancyModal from "../comp/fancyModal";
-import ShowImage from "./ShowImage";
-import fire from 'firebase'
 
 
 
-const Profile = ({setSelectedImage, currentUser, handleUpload, handleLogout}) => {
+
+const Profile = () => {
+
  
 console.log(firebase.auth().currentUser)
 
@@ -32,6 +31,9 @@ console.log(firebase.auth().currentUser)
       <p><b>Hello! Your displayName is <i>{firebase.auth().currentUser.displayName}</i> !</b></p>
       <p><b>You're logged in with <i>{firebase.auth().currentUser.email}</i> !</b></p>
       <p><b>You have uploaded these images </b></p>
+  
+    
+  
       
     </section>
 

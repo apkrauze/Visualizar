@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { firestore, storage, timesstamp } from "../config/fire";
 import Sidebar from "../Sidebar";
-import handleLogout from "./LoginPage";
 import navLogo from "../nav-logo.png";
-import loadGif from "../loadingGIF.gif";
-import firebase from 'firebase';
+
 
 const Upload = ({handleLogout}) => {
   const [image, setImage] = useState(null);
