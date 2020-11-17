@@ -1,11 +1,6 @@
 import React from 'react';
-import Switch from 'react-bootstrap/esm/Switch';
 import { slide as Menu } from 'react-burger-menu';
 import { NavLink, Route, BrowserRouter as Router } from 'react-router-dom';
-import LoginPage from './Pages/LoginPage';
-import Profile from './Pages/Profile';
-import Upload from './Pages/Upload';
-import Hero from './Pages/Hero';
 
 export default ({ handleLogout }) => {
   return (

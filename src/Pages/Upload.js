@@ -10,6 +10,7 @@ const Upload = ({ handleLogout }) => {
   const [url, setUrl] = useState("");
   const [ifShownErr, setErrFlag] = useState(true);
   const [imagePreview, setImagePreview] = useState(null);
+  const Loader = require('halogen/PulseLoader');
 
   const handleChange = (e) => {
     const selected = e.target.files[0];
