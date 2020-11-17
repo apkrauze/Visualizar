@@ -7,9 +7,9 @@ export default () => {
   const handleLogout = () => {
     fire.auth().signOut();
   };
+
   return (
-    <Menu>
-      
+    <Menu>      
       <NavLink activeClassName="active" to="/Hero">
         Home
         </NavLink>
@@ -19,12 +19,11 @@ export default () => {
       <NavLink activeClassName="active" to="/Upload">
         Upload
         </NavLink>
-        <NavLink activeClassName="active" exact to="/LoginPage">
+        <NavLink activeClassName="active" exact to="/">
         <a className="menu-item">
         <button className="logout-button" onClick={handleLogout}>Logout</button>
       </a>
-        </NavLink>
-        
+        </NavLink>        
     </Menu>
   );
 };

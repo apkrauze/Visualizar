@@ -70,7 +70,6 @@ const Upload = ({handleLogout}) => {
         <Sidebar
           pageWrapId={"page-wrap"}
           outerContainerId={"outer-container"}
-          handleLogout={handleLogout}
         />
       </div>
       <nav>

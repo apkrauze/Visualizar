@@ -5,10 +5,7 @@ import ShowImage from "./ShowImage";
 import FancyModal from "../comp/fancyModal";
 
 
-
-
-
-const Hero = ({ handleLogout }) => {
+const Hero = () => {
   const [selectedImage, setSelectedImage] = useState(null)  
   
     
@@ -18,7 +15,6 @@ const Hero = ({ handleLogout }) => {
         <Sidebar
           pageWrapId={"page-wrap"}
           outerContainerId={"outer-container"}
-          handleLogout={handleLogout}
         />
       </div>
       <nav>
