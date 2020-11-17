@@ -7,6 +7,7 @@ import FancyModal from "../comp/fancyModal";
 
 
 
+
 const Hero = ({ handleLogout }) => {
   const [selectedImage, setSelectedImage] = useState(null)  
   

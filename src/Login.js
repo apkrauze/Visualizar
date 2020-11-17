@@ -30,16 +30,6 @@ const Login = (props) => {
         <div className="logo-contain">
           <img className="logo-login" src={logo} alt={"logo"} />
         </div>
-        <label>Display name</label>
-        <input
-          type="text"
-          autoFocus
-          required
-          value={displayName}
-          onChange={(e) => setDisplayName(e.target.value)}
-          placeholder="Display Name"
-        ></input>
-
         <label>Email</label>
         <input
           type="text"

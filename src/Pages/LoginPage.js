@@ -3,6 +3,7 @@ import fire from '../config/fire';
 import Login from '../Login';
 import Hero from '../Pages/Hero';
 import '../App.css';
+import Sidebar from '../Sidebar';
 
 
 function LoginPage() {
@@ -96,8 +97,7 @@ function LoginPage() {
     return (
     <div className="App">
       {user ? (
-         <Hero handleLogout={handleLogout}/>
-         
+         <Hero handleLogout={handleLogout}/>         
       ) : (
         <Login
         email={email} 

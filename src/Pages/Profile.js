@@ -4,12 +4,15 @@ import navLogo from "../nav-logo.png";
 import firebase from 'firebase/app';
 import FancyModal from "../comp/fancyModal";
 import ShowImage from "./ShowImage";
+import fire from 'firebase'
 
 
 
-const Profile = ({setSelectedImage, currentUser, handleUpload}) => {
-
+const Profile = ({setSelectedImage, currentUser, handleUpload, handleLogout}) => {
  
+console.log(firebase.auth().currentUser)
+
+
   return (
     <section className="hero">
       <nav>
@@ -23,9 +26,12 @@ const Profile = ({setSelectedImage, currentUser, handleUpload}) => {
         <Sidebar
           pageWrapId={"page-wrap"}
           outerContainerId={"outer-container"}
+          handleLogout={ handleLogout }
         />
       </div>
-      <p>Hello {firebase.auth().currentUser.displayName}</p>
+      <p><b>Hello! Your displayName is <i>{firebase.auth().currentUser.displayName}</i> !</b></p>
+      <p><b>You're logged in with <i>{firebase.auth().currentUser.email}</i> !</b></p>
+      <p><b>You have uploaded these images </b></p>
       
     </section>
 

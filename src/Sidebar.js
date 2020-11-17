@@ -1,9 +1,15 @@
 import React from 'react';
 import { slide as Menu } from 'react-burger-menu';
 import { NavLink, BrowserRouter as Router } from 'react-router-dom';
+import fire from 'firebase';
 
 
-export default ({ handleLogout }) => {
+export default () => {
+  const handleLogout = () => {
+    fire.auth().signOut();
+  };
+
+  
   return (
     <Menu>
       <NavLink activeClassName="active" exact to="/">
