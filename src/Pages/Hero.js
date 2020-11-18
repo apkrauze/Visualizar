@@ -3,6 +3,7 @@ import Sidebar from "../Sidebar";
 import navLogo from "../nav-logo.png";
 import ShowImage from "./ShowImage";
 import FancyModal from "../comp/fancyModal";
+import firebase from 'firebase'
 
 
 const Hero = () => {

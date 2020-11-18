@@ -9,8 +9,7 @@ import firebase from 'firebase/app';
 const Profile = () => {
 
  
-console.log(firebase.auth().currentUser)
-
+console.log("your displayName is " + firebase.auth().currentUser.displayName)
 
   return (
     <section className="hero">
@@ -29,7 +28,7 @@ console.log(firebase.auth().currentUser)
       </div>
       <p><b>Hello! Your displayName is <i>{firebase.auth().currentUser.displayName}</i> !</b></p>
       <p><b>You're logged in with <i>{firebase.auth().currentUser.email}</i> !</b></p>
-      <p><b>You have uploaded these images </b></p>     
+      <p><b>You have uploaded these images  </b></p>     
     </section>
 
   );

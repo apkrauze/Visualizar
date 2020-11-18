@@ -20,9 +20,9 @@ export default () => {
         Upload
         </NavLink>
         <NavLink activeClassName="active" exact to="/">
-        <a className="menu-item">
+        <p className="menu-item">
         <button className="logout-button" onClick={handleLogout}>Logout</button>
-      </a>
+      </p>
         </NavLink>        
     </Menu>
   );

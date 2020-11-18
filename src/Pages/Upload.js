@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { firestore, storage, timesstamp } from "../config/fire";
 import Sidebar from "../Sidebar";
 import navLogo from "../nav-logo.png";
+import firebase from 'firebase';
 
 
 const Upload = ({handleLogout}) => {
@@ -9,6 +10,7 @@ const Upload = ({handleLogout}) => {
   const [url, setUrl] = useState("");
   const [ifShownErr, setErrFlag] = useState(true);
   const [imagePreview, setImagePreview] = useState(null);
+  const [description, setDescription] = useState('');
 
   const handleChange = (e) => {
     const selected = e.target.files[0];
@@ -55,7 +57,8 @@ const Upload = ({handleLogout}) => {
           .then((url) => {
             setUrl(url);
             const createdAt = timesstamp();
-            collectionRef.add({ url, createdAt });
+            
+            collectionRef.add({ url, createdAt});
           })
           .then(alert("Thank you for uploading your picture!"));
       }
