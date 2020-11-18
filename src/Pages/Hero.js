@@ -5,10 +5,10 @@ import ShowImage from "./ShowImage";
 import FancyModal from "../comp/fancyModal";
 
 
-
-const Hero = ({ handleLogout }) => {
+const Hero = () => {
   const [selectedImage, setSelectedImage] = useState(null)  
   
+  console.log(selectedImage);
     
   return (
     <section className="hero" id="outer-container">
@@ -16,7 +16,7 @@ const Hero = ({ handleLogout }) => {
         <Sidebar
           pageWrapId={"page-wrap"}
           outerContainerId={"outer-container"}
-          handleLogout={handleLogout}
+          
         />
       </div>
       <nav>
@@ -32,8 +32,10 @@ const Hero = ({ handleLogout }) => {
     
       </section>
       <div id="page-wrap">
-        <ShowImage setSelectedImage={setSelectedImage}/>
+        <ShowImage setSelectedImage={setSelectedImage} /> 
         { selectedImage && <FancyModal selectedImage={selectedImage} setSelectedImage={setSelectedImage} /> }
+        <p></p>
+        
       </div>
 
       

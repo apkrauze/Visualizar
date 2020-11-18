@@ -2,14 +2,11 @@ import React from "react";
 import Sidebar from "../Sidebar";
 import navLogo from "../nav-logo.png";
 import firebase from 'firebase/app';
+import useMyImages from "../hooks/useMyImages";
 
+const Profile = ({setSelectedImage}) => {
+  const { docs } = useMyImages("images");
 
-
-
-const Profile = () => {
-var user = firebase.auth().currentUser;
-
- 
   return (
     <section className="hero">
       <nav>
@@ -25,8 +22,23 @@ var user = firebase.auth().currentUser;
           outerContainerId={"outer-container"}
         />
       </div>
-      <p>Logged in as {firebase.auth().currentUser.email}</p>
-      <p>You have uploaded these images</p>
+      <p><b>Hello!  <i>{firebase.auth().currentUser.displayName}</i> !</b></p>
+      <p><b>You're logged in with <i>{firebase.auth().currentUser.email}</i> !</b></p>
+      <p><b>You have uploaded these images  </b></p>
+      <div className="img-wrapper">
+      {docs &&
+        docs.map((doc) => (
+          <div key={doc.id} >
+            <div className="img-box" onClick={() => setSelectedImage(doc.url)}>
+              <img src={doc.url} alt="uploaded image" className="img-contain"/>
+              <p>{doc.displayName}</p>
+            </div>             
+          </div>          
+        ))}
+    </div>
+      
+    
+  
       
     </section>
 

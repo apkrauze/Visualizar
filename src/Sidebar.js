@@ -1,15 +1,15 @@
 import React from 'react';
 import { slide as Menu } from 'react-burger-menu';
-import { NavLink, BrowserRouter as Router } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import fire from './config/fire';
 
 export default () => {
   const handleLogout = () => {
     fire.auth().signOut();
   };
+
   return (
-    <Menu>
-      
+    <Menu>     
       <NavLink activeClassName="active" to="/Hero">
         Home
         </NavLink>
@@ -20,11 +20,10 @@ export default () => {
         Upload
         </NavLink>
         <NavLink activeClassName="active" exact to="/">
-        <p className="menu-item">
+        <p className="menu-item" href="">
         <button className="logout-button" onClick={handleLogout}>Logout</button>
-      </p>
-        </NavLink>
-        
+        </p>
+        </NavLink>        
     </Menu>
   );
 };
