@@ -7,6 +7,7 @@ import firebase from 'firebase/app';
 
 
 const Profile = () => {
+var user = firebase.auth().currentUser;
 
  
   return (
@@ -24,12 +25,8 @@ const Profile = () => {
           outerContainerId={"outer-container"}
         />
       </div>
-      <p><b>Hello! Your displayName is <i>{firebase.auth().currentUser.displayName}</i> !</b></p>
-      <p><b>You're logged in with <i>{firebase.auth().currentUser.email}</i> !</b></p>
-      <p><b>You have uploaded these images </b></p>
-  
-    
-  
+      <p>Logged in as {firebase.auth().currentUser.email}</p>
+      <p>You have uploaded these images</p>
       
     </section>
 

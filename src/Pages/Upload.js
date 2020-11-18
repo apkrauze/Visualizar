@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { firestore, storage, timesstamp } from "../config/fire";
 import Sidebar from "../Sidebar";
 import navLogo from "../nav-logo.png";
-
+import loadGif from '../loadingGIF.gif';
 
 const Upload = ({handleLogout}) => {
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState("");
   const [ifShownErr, setErrFlag] = useState(true);
   const [imagePreview, setImagePreview] = useState(null);
-  const Loader = require('halogen/PulseLoader');
+  const [load, setLoad] = useState(false);
 
   const handleChange = (e) => {
     const selected = e.target.files[0];
@@ -36,7 +36,7 @@ const Upload = ({handleLogout}) => {
 
     const collectionRef = firestore.collection('images');
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
-
+    const load = loadGif;
 
     uploadTask.on(
       "state_changed",
@@ -64,6 +64,7 @@ const Upload = ({handleLogout}) => {
   };
 
   console.log("image: ", image);
+  console.log(url);
 
   return (
     <section className="hero" id="outer-container">
@@ -102,7 +103,7 @@ const Upload = ({handleLogout}) => {
           <div className="img-container">
             <p>Preview</p>
             <div className="imagePreview"></div>
-            <img className="img-wrap" src={imagePreview} />
+            <img className="img-wrap" src={imagePreview}/>
           </div>
           {/* <div className="spinner-contain">
           <img src={loadGif} alt={'spinner'}/>
