@@ -41,10 +41,15 @@ const Profile = ({setSelectedImage}) => {
           outerContainerId={"outer-container"}
         />
       </div>
-      <p><b>Hello!  <i>{user.displayName}</i> !</b></p>
-      <p><b>You're logged in with <i>{firebase.auth().currentUser.email}</i> !</b></p>
-      <p><b>You have uploaded these images  </b></p>
+      <section className="user-profile-section">
+      <p>Hello, {user.displayName}!</p>
+      <p>Logged in as: {firebase.auth().currentUser.email}</p>
+      </section>
+      <div className="user-profile-upload">
+        <h3>These are the pictures that you have uploaded:</h3>
+      </div>
       <div className="img-wrapper">
+      
       {docs &&
         docs.map((doc) => (
           <div key={doc.id} >
