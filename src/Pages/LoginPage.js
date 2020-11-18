@@ -13,9 +13,7 @@ function LoginPage(  ) {
   const [emailError, setEmailError] = useState('');
   const [hasAccount, setHasAccount] = useState(false);
   const [displayName, setDisplayName] = useState('');
-  
-
-  
+    
   const clearInputs = () => {
     setEmail('');
     setPassword('');
@@ -26,6 +24,7 @@ function LoginPage(  ) {
     setPasswordError('');
   }
 
+
   const handleLogin = () => {
     clearErrors();
     fire
@@ -33,7 +32,7 @@ function LoginPage(  ) {
       .signInWithEmailAndPassword(email,password)
       .catch(err => {
         switch(err.code){
-          case "auth/invalid-email":
+          case "auth/invalid-email": //default messsages from firebase will be triggered.
           case "auth/user-disabled":
           case "auth/user-not-found":
             setEmailError(err.message);

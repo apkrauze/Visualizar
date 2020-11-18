@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Sidebar from "../Sidebar";
 import navLogo from "../nav-logo.png";
-import firebase from 'firebase/app';
 import useMyImages from "../hooks/useMyImages";
 import useFirebaseAuthentication from "../hooks/userAuth";
 
@@ -31,7 +30,7 @@ const Profile = ({setSelectedImage}) => {
       </div>
       <section className="user-profile-section">
       <p>Hello, {user.displayName}!</p>
-      <p>Logged in as: {firebase.auth().currentUser.email}</p>
+      <p>Logged in as: {user.email}</p>
       </section>
       <div className="user-profile-upload">
         <h3>These are the pictures that you have uploaded:</h3>

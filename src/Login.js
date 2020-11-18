@@ -31,14 +31,14 @@ const Login = (props) => {
         </div>
         {!hasAccount ? (
           <>
-            <label>User</label>
+            <label>Display name</label>
             <input
               type="text"
               autoFocus
               required
               value={displayName}
               onChange={(e) => setDisplayName(e.target.value)}
-              placeholder="User name"
+              placeholder="Display name"
             ></input>
             <label>Email</label>
             <input

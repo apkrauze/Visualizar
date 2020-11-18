@@ -64,7 +64,7 @@ const Upload = () => {
             const createdAt = timesstamp();
             collectionRef.add({ url, createdAt, displayName, /* description */ });
           })
-          .then(alert("Thank you for uploading your picture!"));
+          .then(() => alert("Thank you for uploading your picture!"));
       }
     );
   };
