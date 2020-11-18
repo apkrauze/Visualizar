@@ -5,12 +5,14 @@ import navLogo from "../nav-logo.png";
 import firebase from 'firebase';
 
 
-const Upload = ({handleLogout}) => {
+
+const Upload = () => {
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState("");
   const [ifShownErr, setErrFlag] = useState(true);
   const [imagePreview, setImagePreview] = useState(null);
-  const [description, setDescription] = useState('');
+  
+
 
   const handleChange = (e) => {
     const selected = e.target.files[0];
@@ -37,6 +39,8 @@ const Upload = ({handleLogout}) => {
 
     const collectionRef = firestore.collection('images');
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    const displayName = firebase.auth().currentUser.displayName;
+
 
 
     uploadTask.on(
@@ -57,10 +61,9 @@ const Upload = ({handleLogout}) => {
           .then((url) => {
             setUrl(url);
             const createdAt = timesstamp();
-            
-            collectionRef.add({ url, createdAt});
+            collectionRef.add({ url, createdAt, displayName,/* description */ });
           })
-          .then(alert("Thank you for uploading your picture!"));
+          .then(() => alert("Thank you for uploading your picture!"));
       }
     );
   };
@@ -73,6 +76,7 @@ const Upload = ({handleLogout}) => {
         <Sidebar
           pageWrapId={"page-wrap"}
           outerContainerId={"outer-container"}
+          
         />
       </div>
       <nav>
@@ -85,14 +89,13 @@ const Upload = ({handleLogout}) => {
       <div className="upload-container">
         <div className="upload-wrap">
           <h1 className="puff-in-bottom">Upload your picture!</h1>
-          <label className="upload-input">
+           <label className="upload-input">
             Choose a file
             <input
               type="file"
               onChange={handleChange}
-            />
-            
-          </label>
+            />            
+          </label> 
 
           <p className="file-error" hidden={ifShownErr}>
             File is not selected
@@ -100,6 +103,13 @@ const Upload = ({handleLogout}) => {
           <button className="upload-button" onClick={handleUpload}>
             Upload!
           </button>
+          {/* <label className="input">
+            Description
+            <input
+              type="text"
+            />
+            
+          </label> */}
           <div className="img-container">
             <p>Preview</p>
             <div className="imagePreview"></div>

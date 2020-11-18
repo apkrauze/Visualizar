@@ -26,3 +26,22 @@ const useFirestore = (collection) => { // a collection we want to get our docume
 
 export default useFirestore;
 
+/* 
+var imagasRef = db.collection("images");
+
+var query = citiesRef.where("displayName", "==", "firebase.auth().currentUser.displayName");
+
+
+
+
+db.collection("images").where("displayName", "==", "firebase.auth().currentUser.displayName")
+    .get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+        });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    }); */

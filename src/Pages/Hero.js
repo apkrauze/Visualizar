@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import Sidebar from "../Sidebar";
 import navLogo from "../nav-logo.png";
 import ShowImage from "./ShowImage";
-import FancyModal from "../comp/fancyModal";
-import firebase from 'firebase'
+import FancyModal from "../comp/fancyModal"
 
 
 const Hero = () => {
@@ -16,6 +15,7 @@ const Hero = () => {
         <Sidebar
           pageWrapId={"page-wrap"}
           outerContainerId={"outer-container"}
+          
         />
       </div>
       <nav>
@@ -31,8 +31,10 @@ const Hero = () => {
     
       </section>
       <div id="page-wrap">
-        <ShowImage setSelectedImage={setSelectedImage}/>
+        <ShowImage setSelectedImage={setSelectedImage} /> 
         { selectedImage && <FancyModal selectedImage={selectedImage} setSelectedImage={setSelectedImage} /> }
+        <p></p>
+        
       </div>
 
       
