@@ -7,6 +7,7 @@ export default () => {
   const handleLogout = () => {
     fire.auth().signOut();
   };
+
   return (
     <Menu>     
       <NavLink activeClassName="active" to="/Hero">

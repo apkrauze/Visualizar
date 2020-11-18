@@ -5,7 +5,6 @@ import Hero from '../Pages/Hero';
 import '../App.css';
 
 
-
 function LoginPage(  ) {
   const [user, setUser] = useState('');
   const [email, setEmail] = useState('');

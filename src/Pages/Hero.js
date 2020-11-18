@@ -5,8 +5,7 @@ import ShowImage from "./ShowImage";
 import FancyModal from "../comp/fancyModal";
 
 
-
-const Hero = (props) => {
+const Hero = () => {
   const [selectedImage, setSelectedImage] = useState(null)  
   
   console.log(selectedImage);
