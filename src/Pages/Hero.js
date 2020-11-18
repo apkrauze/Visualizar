@@ -33,8 +33,6 @@ const Hero = () => {
       <div id="page-wrap">
         <ShowImage setSelectedImage={setSelectedImage} /> 
         { selectedImage && <FancyModal selectedImage={selectedImage} setSelectedImage={setSelectedImage} /> }
-        <p></p>
-        
       </div>
 
       

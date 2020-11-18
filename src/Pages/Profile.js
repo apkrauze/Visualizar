@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Sidebar from "../Sidebar";
 import navLogo from "../nav-logo.png";
 import useMyImages from "../hooks/useMyImages";
+import firebase from 'firebase'
 import fire from 'firebase'
 
 const Profile = ({setSelectedImage}) => {
@@ -38,10 +39,15 @@ const Profile = ({setSelectedImage}) => {
           outerContainerId={"outer-container"}
         />
       </div>
-      <p><b>Hello! {user.displayName}</b></p>
-      <p><b>You're logged in with !</b></p>
-      <p><b>You have uploaded these images  </b></p>
+      <section className="user-profile-section">
+      <p>Hello, {firebase.auth().currentUser.displayName}!</p>
+      <p>Logged in as: {firebase.auth().currentUser.email}</p>
+      </section>
+      <div className="user-profile-upload">
+        <h3>These are the pictures that you have uploaded:</h3>
+      </div>
       <div className="img-wrapper">
+      
       {docs &&
         docs.map((doc) => (
           <div key={doc.id} >
