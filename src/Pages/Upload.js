@@ -118,9 +118,6 @@ const Upload = () => {
             <div className="imagePreview"></div>
             <img className="img-wrap" src={imagePreview}/>
           </div>
-          {/* <div className="spinner-contain">
-          <img src={loadGif} alt={'spinner'}/>
-          </div> */}
         </div>
       </div>
     </section>
