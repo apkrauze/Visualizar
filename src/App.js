@@ -13,13 +13,8 @@ function App() {
 
   return (
     <Router>
-<<<<<<< HEAD
       <Switch>
         <Route path="/" exact component={LoginPage} />
-=======
-      <Switch>      
-        <Route path="/" exact component={LoginPage} /> 
->>>>>>> daf223f28b92b25165d784c5579dda31ee62dd2c
         <Route path="/Hero"  component={Hero} />
         <Route path="/Profile" component={Profile} />
         <Route path="/Upload" component={Upload} />

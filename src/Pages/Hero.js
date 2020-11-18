@@ -15,8 +15,7 @@ const Hero = () => {
       <div id="page-wrap">
         <Sidebar
           pageWrapId={"page-wrap"}
-          outerContainerId={"outer-container"}
-          
+          outerContainerId={"outer-container"} 
         />
       </div>
       <nav>
@@ -34,7 +33,6 @@ const Hero = () => {
       <div id="page-wrap">
         <ShowImage setSelectedImage={setSelectedImage} /> 
         { selectedImage && <FancyModal selectedImage={selectedImage} setSelectedImage={setSelectedImage} /> }
-        <p></p>
         
       </div>
 
