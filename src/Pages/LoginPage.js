@@ -3,7 +3,6 @@ import fire from '../config/fire';
 import Login from '../Login';
 import Hero from '../Pages/Hero';
 import '../App.css';
-import Sidebar from '../Sidebar';
 
 
 
@@ -48,8 +47,6 @@ function LoginPage(  ) {
       });
   };
   
-  
-
   const handleSignup = () => {
     clearErrors();
     fire
@@ -76,8 +73,6 @@ function LoginPage(  ) {
     });
 
   };
-
-  
 
   const authListener = () => {
     fire.auth().onAuthStateChanged((user) =>{
