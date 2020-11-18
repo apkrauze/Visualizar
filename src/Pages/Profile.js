@@ -1,25 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Sidebar from "../Sidebar";
 import navLogo from "../nav-logo.png";
 import firebase from 'firebase/app';
 import useMyImages from "../hooks/useMyImages";
-import fire from "../config/fire";
+import useFirebaseAuthentication from "../hooks/userAuth";
 
 const Profile = ({setSelectedImage}) => {
   const { docs } = useMyImages("images");
-  const [user, setUser] = useState(null);
-
-  const authListener = () => {
-    fire.auth().onAuthStateChanged((user) =>{
-      if (user) {
-        setUser(user);
-      }
-    },);
-  };
-
-  useEffect(() => {
-    authListener();
-  },);
+  const user = useFirebaseAuthentication();
   
   if(user === null){ 
     return null  
@@ -54,7 +42,7 @@ const Profile = ({setSelectedImage}) => {
         docs.map((doc) => (
           <div key={doc.id} >
             <div className="img-box" >
-              <img src={doc.url} alt="uploaded image" className="img-contain"/>
+              <img src={doc.url} alt="" className="img-contain"/>
               <p>{doc.displayName}</p>
               {/* <p>{doc.description}</p> */}            
             </div>             
