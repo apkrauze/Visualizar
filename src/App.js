@@ -8,8 +8,8 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Upload from './Pages/Upload';
 
 
-function App() {
 
+function App() {
   return (
     <Router>
       <Switch>
@@ -19,6 +19,7 @@ function App() {
         <Route path="/Upload" component={Upload} /> 
       </Switch>
     </Router>
+    
   );
 }
 

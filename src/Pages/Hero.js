@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import Sidebar from "../Sidebar";
 import navLogo from "../nav-logo.png";
 import ShowImage from "./ShowImage";
-import FancyModal from "../comp/fancyModal"
+import FancyModal from "../comp/fancyModal";
+import Modal from "../comp//Modal";
+import useModal from '../comp/useModal';
 
 
 const Hero = () => {
   const [selectedImage, setSelectedImage] = useState(null)  
-  
+  const {isShowing, toggle} = useModal();
     
   return (
     <section className="hero" id="outer-container">
@@ -21,8 +23,9 @@ const Hero = () => {
         <img
           className="logo-page slide-in-blurred-left"
           src={navLogo}
-          alt={"logo"}
+          alt={"logo"} onClick={toggle}
         />
+        
       </nav>
       <section className="gallery-wrap">
           <h1 className="puff-in-bottom">Gallery</h1>
@@ -33,7 +36,10 @@ const Hero = () => {
         <ShowImage setSelectedImage={setSelectedImage} /> 
         { selectedImage && <FancyModal selectedImage={selectedImage} setSelectedImage={setSelectedImage} /> }
         </div>
-
+        <Modal
+        isShowing={isShowing}
+        hide={toggle}
+      />
       
     </section>
   );

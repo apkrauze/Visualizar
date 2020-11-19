@@ -47,7 +47,7 @@ const Profile = () => {
             <div className="img-box" onClick={() => setSelectedImage(doc.url)}>           
               <img src={doc.url} alt="" className="img-contain"/>
               <p>You uploaded this picture, {doc.displayName}</p>
-              <p>{doc.description}</p>            
+              <p>Description: {doc.description}</p>            
             </div>             
           </div>          
         ))}
