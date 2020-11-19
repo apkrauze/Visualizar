@@ -12,9 +12,11 @@ const ShowImage = ({ setSelectedImage }) => {
             <div className="img-box" onClick={() => setSelectedImage(doc.url)}>
               <img src={doc.url} alt="uploaded image" className="img-contain" />
               <div className="img-overlay">
-                <p className="text">Uploaded by: {doc.displayName}</p>
+                <p className="text">Uploaded by: @{doc.displayName}</p>
+                <p className="text">Description: <b><i># {doc.description}</i></b></p>
               </div>
             </div>
+            
           </div>
         ))}
     </div>

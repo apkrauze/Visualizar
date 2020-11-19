@@ -13,6 +13,7 @@ const Upload = () => {
   const [ifShownErr, setErrFlag] = useState(true);
   const [imagePreview, setImagePreview] = useState(null);
   const [load, setLoad] = useState(false);
+  const [description, setDescription] = useState("");
   
 
 
@@ -62,7 +63,7 @@ const Upload = () => {
           .then((url) => {
             setUrl(url);
             const createdAt = timesstamp();
-            collectionRef.add({ url, createdAt, displayName, /* description */ });
+            collectionRef.add({ url, createdAt, displayName, description });
           })
           .then(() => alert("Thank you for uploading your picture!"));
       }
@@ -98,6 +99,7 @@ const Upload = () => {
               onChange={handleChange}
             />            
           </label> 
+          <label className="upload-input" >Description: <input type="text" maxLength="20" onChange={e => setDescription(e.target.value)} /></label>
 
           <p className="file-error" hidden={ifShownErr}>
             File is not selected
