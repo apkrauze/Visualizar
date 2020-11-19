@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Sidebar from "../Sidebar";
 import navLogo from "../nav-logo.png";
 import useMyImages from "../hooks/useMyImages";
 import useFirebaseAuthentication from "../hooks/userAuth";
+import FancyModal from "../comp/fancyModal";
 
-const Profile = ({setSelectedImage}) => {
+
+const Profile = () => {
   const { docs } = useMyImages("images");
   const user = useFirebaseAuthentication();
+  const [selectedImage, setSelectedImage] = useState(null);
   
   if(user === null){ 
     return null  
@@ -35,18 +38,20 @@ const Profile = ({setSelectedImage}) => {
       <div className="user-profile-upload">
         <h3>These are the pictures that you have uploaded:</h3>
       </div>
+      
       <div className="img-wrapper">
       
       {docs &&
         docs.map((doc) => (
           <div key={doc.id} >
-            <div className="img-box" >
+            <div className="img-box" onClick={() => setSelectedImage(doc.url)}>           
               <img src={doc.url} alt="" className="img-contain"/>
-              <p>{doc.displayName}</p>
-              {/* <p>{doc.description}</p> */}            
+              <p><b>@ {doc.displayName}</b></p>
+              <p><strong># {doc.description} </strong>  </p>         
             </div>             
           </div>          
         ))}
+        { selectedImage && <FancyModal selectedImage={selectedImage} setSelectedImage={setSelectedImage} /> }
         
     </div>
       
