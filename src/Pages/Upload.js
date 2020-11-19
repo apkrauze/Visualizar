@@ -42,8 +42,7 @@ const Upload = () => {
     const collectionRef = firestore.collection('images');
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
     const displayName = firebase.auth().currentUser.displayName;
-
-
+    /* const description = firebase.auth().currentUser.description; */
 
     uploadTask.on(
       "state_changed",
@@ -63,9 +62,9 @@ const Upload = () => {
           .then((url) => {
             setUrl(url);
             const createdAt = timesstamp();
-            collectionRef.add({ url, createdAt, displayName,/* description */ });
+            collectionRef.add({ url, createdAt, displayName, /* description */ });
           })
-          .then(alert("Thank you for uploading your picture!"));
+          .then(() => alert("Thank you for uploading your picture!"));
       }
     );
   };
@@ -106,17 +105,17 @@ const Upload = () => {
           <button className="upload-button" onClick={handleUpload}>
             Upload!
           </button>
-          {/* <label className="input">
+           {/* <label className="input">
             Description
             <input
               type="text"
             />
             
-          </label> */}
+          </label>  */}
           <div className="img-container">
             <p>Preview</p>
             <div className="imagePreview"></div>
-            <img className="img-wrap" src={imagePreview}/>
+            <img className="img-wrap" src={imagePreview} alt=""/>
           </div>
         </div>
       </div>

@@ -13,9 +13,9 @@
     measurementId: "G-GQN1F4S95K"
   };
   const fire = firebase.initializeApp(firebaseConfig);
-  const storage = firebase.storage();
-  const firestore = firebase.firestore();
-  const timesstamp = firebase.firestore.FieldValue.serverTimestamp;
+  const storage = firebase.storage(); //the database where we store all our files 
+  const firestore = firebase.firestore(); //collections where we store our files as objects with keys and values?? sorted by url and createdAt, displayed descending.
+  const timesstamp = firebase.firestore.FieldValue.serverTimestamp; //the exact time when the file was created
   
   
 

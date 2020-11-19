@@ -2,21 +2,19 @@ import React, { useState } from "react";
 import Sidebar from "../Sidebar";
 import navLogo from "../nav-logo.png";
 import ShowImage from "./ShowImage";
-import FancyModal from "../comp/fancyModal";
+import FancyModal from "../comp/fancyModal"
 
 
 const Hero = () => {
   const [selectedImage, setSelectedImage] = useState(null)  
   
-  console.log(selectedImage);
     
   return (
     <section className="hero" id="outer-container">
       <div id="page-wrap">
         <Sidebar
           pageWrapId={"page-wrap"}
-          outerContainerId={"outer-container"}
-          
+          outerContainerId={"outer-container"} 
         />
       </div>
       <nav>
@@ -34,6 +32,7 @@ const Hero = () => {
       <div id="page-wrap">
         <ShowImage setSelectedImage={setSelectedImage} /> 
         { selectedImage && <FancyModal selectedImage={selectedImage} setSelectedImage={setSelectedImage} /> }
+        
       </div>
 
       

@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
 import { firestore } from "../config/fire";
-import firebase from "firebase";
+import useFirebaseAuthentication from './userAuth';
 
 const useMyImages = (collection) => {
     const [docs, setDocs] = useState([]);
+    const user = useFirebaseAuthentication();
 
     useEffect(() =>  {
-        const unsub = firestore.collection("images").where("displayName", "==", firebase.auth().currentUser.displayName)
-        .orderBy('createdAt', 'desc')
-        .onSnapshot((snapshot) => {
+        if(user){
+            const unsub = firestore.collection("images").where("displayName", "==", user.displayName)
+            .orderBy('createdAt', 'desc')
+            .onSnapshot((snapshot) => {
             let documents = [];
             snapshot.forEach(doc => {
                 documents.push({...doc.data(), id: doc.id})
@@ -17,7 +19,9 @@ const useMyImages = (collection) => {
         });
         
         return () => unsub();
-    }, [collection])
+        }
+        
+    }, [user, collection])
     
     return { docs };
 

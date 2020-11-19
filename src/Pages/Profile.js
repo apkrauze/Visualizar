@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Sidebar from "../Sidebar";
 import navLogo from "../nav-logo.png";
-import firebase from 'firebase/app';
 import useMyImages from "../hooks/useMyImages";
+import useFirebaseAuthentication from "../hooks/userAuth";
 
 const Profile = ({setSelectedImage}) => {
   const { docs } = useMyImages("images");
+  const user = useFirebaseAuthentication();
+  
+  if(user === null){ 
+    return null  
+  }
+
 
   return (
     <section className="hero">
@@ -23,8 +29,8 @@ const Profile = ({setSelectedImage}) => {
         />
       </div>
       <section className="user-profile-section">
-      <p>Hello, {firebase.auth().currentUser.displayName}!</p>
-      <p>Logged in as: {firebase.auth().currentUser.email}</p>
+      <p>Hello, {user.displayName}!</p>
+      <p>Logged in as: {user.email}</p>
       </section>
       <div className="user-profile-upload">
         <h3>These are the pictures that you have uploaded:</h3>
@@ -34,12 +40,14 @@ const Profile = ({setSelectedImage}) => {
       {docs &&
         docs.map((doc) => (
           <div key={doc.id} >
-            <div className="img-box" onClick={() => setSelectedImage(doc.url)}>
-              <img src={doc.url} alt="uploaded image" className="img-contain"/>
-              <p>{doc.displayName}</p>
+            <div className="img-box" >
+              <img src={doc.url} alt="" className="img-contain"/>
+              <p>You uploaded this picture, {doc.displayName}</p>
+              {/* <p>{doc.description}</p> */}            
             </div>             
           </div>          
         ))}
+        
     </div>
       
     

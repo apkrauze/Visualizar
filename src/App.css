@@ -455,10 +455,10 @@ input[type="file"] {
   margin-left: auto;
   margin-right: auto;
 }
-section.login {
-    background-image: url("desktop-login.jpg");
-    background-size: cover;
-  }
+
+.text{
+  text-align: center;
+}
 
 /* ---------------------PROFILE STYLES_----------------------- */
 
@@ -807,9 +807,16 @@ section.login {
 }
 
 /* ---------------------_IMAGE ON CLICK_----------------------- */
-@media only screen and (min-width: 1300px) {
+
+@media (min-width: 768px) and (max-width: 1360px) and (orientation: landscape) {
+  
   section.login {
     background-image: url("desktop-login.jpg");
     background-size: cover;
   }
+
+  video{
+    display: none;
+  }
+  
 }
