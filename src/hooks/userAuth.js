@@ -5,17 +5,17 @@ import firebase from "firebase";
 const useFirebaseAuthentication = () => {
     const [userAuth, setUserAuth] = useState(null);
 
-    useEffect(() =>{
-       const unlisten = firebase.auth().onAuthStateChanged(
-        userAuth => {
-            userAuth
-              ? setUserAuth(userAuth)
-              : setUserAuth(null);
-          },
-       );
-       return () => {
-           unlisten();
-       }
+    useEffect(() => {
+        const unlisten = firebase.auth().onAuthStateChanged(
+            userAuth => {
+                userAuth
+                    ? setUserAuth(userAuth)
+                    : setUserAuth(null);
+            },
+        );
+        return () => {
+            unlisten();
+        }
     });
 
     return userAuth

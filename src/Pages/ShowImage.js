@@ -16,7 +16,7 @@ const ShowImage = ({ setSelectedImage }) => {
                 <p className="text">Description: <b><i># {doc.description}</i></b></p>
               </div>
             </div>
-            
+
           </div>
         ))}
     </div>

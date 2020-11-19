@@ -9,7 +9,7 @@ export default () => {
   };
 
   return (
-    <Menu>     
+    <Menu>
       <NavLink activeClassName="active" to="/Hero">
         Home
         </NavLink>
@@ -19,11 +19,11 @@ export default () => {
       <NavLink activeClassName="active" to="/Upload">
         Upload
         </NavLink>
-        <NavLink activeClassName="active" exact to="/">
+      <NavLink activeClassName="active" exact to="/">
         <p className="menu-item" href="">
-        <button className="logout-button" onClick={handleLogout}>Logout</button>
+          <button className="logout-button" onClick={handleLogout}>Logout</button>
         </p>
-        </NavLink>        
+      </NavLink>
     </Menu>
   );
 };

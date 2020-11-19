@@ -7,7 +7,7 @@ const FancyModal = ({ selectedImage, setSelectedImage }) => {
     }
 
     return (
-        <div className ="backdrop" onClick={handleClick} >
+        <div className="backdrop" onClick={handleClick} >
             <img src={selectedImage} alt="on click will be large"></img>
         </div>
     )
