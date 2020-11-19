@@ -5,7 +5,7 @@ import ShowImage from "./ShowImage";
 import FancyModal from "../comp/fancyModal"
 
 
-const Hero = () => {
+const Hero = ( {handleClicker} ) => {
   const [selectedImage, setSelectedImage] = useState(null)  
   
     
@@ -22,6 +22,7 @@ const Hero = () => {
           className="logo-page slide-in-blurred-left"
           src={navLogo}
           alt={"logo"}
+          onClick={handleClicker}
         />
       </nav>
       <section className="gallery-wrap">
